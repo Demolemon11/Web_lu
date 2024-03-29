@@ -32,7 +32,6 @@ pub async fn run() {
         loop {
             let (result,mut wt) = rx.recv().await.unwrap();
             wt.write_all(result.as_bytes()).await.unwrap()
-
         }
     }));
     a.unwrap();
