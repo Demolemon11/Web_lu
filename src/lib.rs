@@ -5,7 +5,6 @@ use tokio::{
     net::TcpListener,
 };
 mod http;
-mod process;
 pub async fn run() {
     loop {
         tokio::spawn(async move {
@@ -23,7 +22,7 @@ pub async fn run() {
             BufReader::new(rd).read_line(&mut s).await.unwrap();
 
             let foruser = Http::new(HttpRequest::build(s).await, HttpResponse::default())
-                .processer()
+                .processor()
                 .await;
 
             wt.write_all(foruser.as_bytes()).await.unwrap()

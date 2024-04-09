@@ -3,9 +3,9 @@ use std::{collections::HashMap, iter::zip};
 pub struct HttpRequest {
     pub method: Method,
     pub path: String,
-    version: String,
-    headers: HashMap<String, String>,
-    msg_body: Option<String>,
+    _version: String,
+    _headers: HashMap<String, String>,
+    _msg_body: Option<String>,
 }
 impl HttpRequest {
     pub async fn build(s: String) -> Self {
@@ -15,7 +15,7 @@ impl HttpRequest {
 
         let method = f_line_iter.next().unwrap().into();
         let path = f_line_iter.next().unwrap().to_string();
-        let version = f_line_iter.next().unwrap().to_string();
+        let _version = f_line_iter.next().unwrap().to_string();
 
         let vec = s_iter
             .map(|item| item.split(": "))
@@ -23,7 +23,7 @@ impl HttpRequest {
             .enumerate()
             .collect::<Vec<_>>();
 
-        let headers = zip(
+        let _headers = zip(
             vec.iter()
                 .filter(|(index, _)| index % 2 == 0)
                 .map(|(_, key)| key.to_string()),
@@ -33,14 +33,14 @@ impl HttpRequest {
         )
         .collect::<HashMap<_, _>>();
 
-        let msg_body = None;
+        let _msg_body = None;
 
         Self {
             method,
             path,
-            version,
-            headers,
-            msg_body,
+            _version,
+            _headers,
+            _msg_body,
         }
     }
 }

@@ -1,6 +1,7 @@
 pub mod httpmethod;
 pub mod httprequest;
 pub mod httpresponse;
+pub mod process;
 use crate::http::httprequest::HttpRequest;
 use crate::http::httpresponse::HttpResponse;
 pub struct Http {
