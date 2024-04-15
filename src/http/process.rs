@@ -16,24 +16,24 @@ impl Http {
         let put_closure = || {};
 
         match self.request.method {
-            Method::GET => match &self.request.path[..] {
+            Method::Get => match &self.request.path[..] {
                 "/" => get_post_closure("root.html"),
 
                 "/about" => get_post_closure("about.html"),
 
                 _ => get_post_closure("404.html"),
             },
-            Method::DELETE => match &self.request.path[..] {
+            Method::Delete => match &self.request.path[..] {
                 "/data" => delete_closure(),
                 _ => {}
             },
 
-            Method::POST => match &self.request.path[..] {
+            Method::Post => match &self.request.path[..] {
                 "/" => get_post_closure("root.html"),
                 "/about" => get_post_closure("about.html"),
                 _ => get_post_closure("404.html"),
             },
-            Method::PUT => match &self.request.path[..] {
+            Method::Put => match &self.request.path[..] {
                 "/data" => put_closure(),
                 _ => {}
             },

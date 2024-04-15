@@ -1,17 +1,17 @@
 pub enum Method {
-    GET,
-    DELETE,
-    POST,
-    PUT,
+    Get,
+    Delete,
+    Post,
+    Put,
     Unknown,
 }
 impl From<&str> for Method {
     fn from(s: &str) -> Self {
         match s {
-            "GET" => Self::GET,
-            "DELETE" => Self::DELETE,
-            "POST" => Self::POST,
-            "PUT" => Self::PUT,
+            "GET" => Self::Get,
+            "DELETE" => Self::Delete,
+            "POST" => Self::Post,
+            "PUT" => Self::Put,
             _ => Self::Unknown,
         }
     }

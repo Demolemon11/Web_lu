@@ -11,15 +11,14 @@ impl HttpRequest {
     pub async fn build(s: String) -> Self {
         let mut s_iter = s.lines();
         let f_line = s_iter.next().unwrap();
-        let mut f_line_iter = f_line.split(" ");
+        let mut f_line_iter = f_line.split(' ');
 
         let method = f_line_iter.next().unwrap().into();
         let path = f_line_iter.next().unwrap().to_string();
         let _version = f_line_iter.next().unwrap().to_string();
 
         let vec = s_iter
-            .map(|item| item.split(": "))
-            .flatten()
+            .flat_map(|item| item.split(": "))
             .enumerate()
             .collect::<Vec<_>>();
 
