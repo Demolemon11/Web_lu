@@ -11,14 +11,11 @@ impl From<Vec<String>> for Parameter {
             Some(t) => match t.as_str() {
                 "run" => match parameter.next() {
                     Some(u) => match u.parse() {
-                        Ok(v) => {
-                            println!("{v}");
-                            Self::Run(v)
-                        }
+                        Ok(v) => Self::Run(v),
                         Err(_) => panic!("The count of thread that you type is not a number!"),
                     },
                     None => {
-                        println!("Server has run 4 as a default count of threads\nType -h | --help to define yourown count.");
+                        println!("Server has run 4 as a default count of threads\nType -h | --help to custom count.");
                         Self::Run(4)
                     }
                 },

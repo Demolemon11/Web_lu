@@ -1,9 +1,8 @@
-use std::{fs, net::TcpStream};
-
 use self::{
     httprequest::{method::Method, path::Path, HttpRequest},
     httpresponse::HttpResponse,
 };
+use std::{fs, net::TcpStream};
 pub mod httprequest;
 pub mod httpresponse;
 pub struct Connection {
@@ -44,7 +43,6 @@ impl Connection {
         self
     }
     pub fn format_response_to_bytes(self) -> Vec<u8> {
-        println!("format sucess");
         format!(
             "{} {} {}\r\nContent-Type:{}\r\nContent-Length:{}\r\n\r\n{}",
             self.response.version,

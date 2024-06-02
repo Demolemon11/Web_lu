@@ -43,7 +43,6 @@ impl HttpRequest {
             val.push(ii.next().unwrap().to_string());
         });
         let _headers: HashMap<_, _> = zip(key, val).collect();
-        println!("{:?} {:?} {}{:?}", method, path, _version, _headers);
         Self {
             method,
             path,
