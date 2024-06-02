@@ -1,5 +1,4 @@
 use std::{
-    net::TcpStream,
     sync::{mpsc, Arc, Mutex},
     thread,
 };

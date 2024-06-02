@@ -46,10 +46,12 @@ impl Connection {
     pub fn format_response_to_bytes(self) -> Vec<u8> {
         println!("format sucess");
         format!(
-            "{}{}{}\r\nConTent-Type:{}",
+            "{} {} {}\r\nContent-Type:{}\r\nContent-Length:{}\r\n\r\n{}",
             self.response.version,
             self.response.status_code,
             self.response.status_text,
+            "text/html",
+            self.response.msg_body.len(),
             self.response.msg_body
         )
         .as_bytes()

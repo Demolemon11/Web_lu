@@ -23,7 +23,10 @@ impl PartialEq for HttpRequest {
 }
 impl HttpRequest {
     pub fn new(mut stream: &TcpStream) -> Self {
-        let mut iter = BufReader::new(&mut stream).lines().map_while(|i| i.ok());
+        let mut iter = BufReader::new(&mut stream)
+            .lines()
+            .map_while(Result::ok)
+            .take_while(|item| !item.is_empty());
         let firstline = iter.next().unwrap();
         let mut firstline = firstline.split(' ');
         let method = firstline.next().unwrap().into();
