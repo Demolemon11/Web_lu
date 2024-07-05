@@ -28,13 +28,13 @@ impl Connection {
 
         match self.request.method {
             Method::Get | Method::Put | Method::Post => match self.request.path {
-                Path::Root => change_msg_body("statics/root.html"),
-                Path::DataBase => change_msg_body("statics/root.html"),
-                Path::Sources => change_msg_body("statics/root.html"),
-                Path::Count => change_msg_body("statics/root.html"),
+                Path::Root => change_msg_body("front/index.html"),
+                Path::DataBase => change_msg_body("front/index.html"),
+                Path::Sources => change_msg_body("front/index.html"),
+                Path::Count => change_msg_body("front/index.html"),
                 Path::Unknown => {
-                    change_status(404, "Not Found");
-                    change_msg_body("statics/404.html")
+                    change_status(404, "front/index.html");
+                    change_msg_body("front/index.html")
                 }
             },
             Method::Delete => {}

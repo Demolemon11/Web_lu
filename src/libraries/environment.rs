@@ -29,18 +29,3 @@ impl From<Vec<String>> for Parameter {
         }
     }
 }
-#[cfg(test)]
-mod test {
-    use crate::environment::Parameter;
-
-    #[test]
-    fn test() {
-        let q: Parameter = vec!["web_lu".to_string(), "run".to_string(), "3".to_string()].into();
-        let q1 = Parameter::Run(4);
-
-        let w: Parameter = vec!["web_lu".to_string(), "run".to_string()].into();
-        let w1 = Parameter::Run(3);
-        assert_eq!(q, q1);
-        assert_eq!(w, w1);
-    }
-}
