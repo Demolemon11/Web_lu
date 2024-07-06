@@ -1,5 +1,7 @@
 #[derive(PartialEq, Eq, Debug)]
 pub enum Path {
+    Js,
+    Css,
     Root,
     DataBase,
     Sources,
@@ -9,6 +11,8 @@ pub enum Path {
 impl From<&str> for Path {
     fn from(path: &str) -> Self {
         match path {
+            "/js/main.js" => Self::Js,
+            "/public.css" => Self::Css,
             "/" => Self::Root,
             "/db" => Self::DataBase,
             "/src" => Self::Sources,

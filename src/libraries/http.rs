@@ -28,6 +28,8 @@ impl Connection {
 
         match self.request.method {
             Method::Get | Method::Put | Method::Post => match self.request.path {
+                Path::Js => change_msg_body("front/js/main.js"),
+                Path::Css => change_msg_body("front/public.css"),
                 Path::Root => change_msg_body("front/index.html"),
                 Path::DataBase => change_msg_body("front/index.html"),
                 Path::Sources => change_msg_body("front/index.html"),
@@ -48,7 +50,10 @@ impl Connection {
             self.response.version,
             self.response.status_code,
             self.response.status_text,
-            "text/html",
+            match self.request.path {
+                Path::Css => "text/css",
+                _ => "text/html",
+            },
             self.response.msg_body.len(),
             self.response.msg_body
         )
