@@ -1,1 +1,2 @@
-let s = document.getElementsByTagName("span")
+let s = document.getElementsByTagName("span");
+console.log(s)
