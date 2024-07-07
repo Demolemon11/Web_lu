@@ -52,4 +52,4 @@ impl HttpRequest {
     }
 }
 #[cfg(test)]
-mod test {}
+mod tests {}
